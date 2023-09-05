@@ -37,7 +37,7 @@ export default function TextForm(props) {
   };
 
   const handleExtraSpaces = () => {
-    let newText = text.split(/[]+/);
+    let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
   };
 
