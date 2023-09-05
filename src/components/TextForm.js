@@ -5,7 +5,7 @@ export default function TextForm(props) {
     // console.log("Uppercase was clicked " + text);
     let newText = text.toUpperCase();
     setText(newText);
-    props.showAlert("Text is converted to uppercase","success")
+    props.showAlert("Text is converted to uppercase", "success");
     // let prev = text;
     // console.log(prev);
     // setText(text.toUpperCase());
@@ -17,7 +17,7 @@ export default function TextForm(props) {
   const handleLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
-    props.showAlert("Text is converted to lowercase","success")
+    props.showAlert("Text is converted to lowercase", "success");
   };
   const handleOnChange = (event) => {
     // console.log("On change");
@@ -26,15 +26,28 @@ export default function TextForm(props) {
   const handleClearClick = () => {
     let newText = " ";
     setText(newText);
-    props.showAlert("Text is cleared","success")
+    props.showAlert("Text is cleared", "success");
   };
+
+  const handleCopy = () => {
+    var text = document.getElementById("myBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied", "success");
+  };
+
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[]+/);
+    setText(newText.join(" "));
+  };
+
   const handleCapitalClick = () => {
     let newText = text
       .split(" ")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
     setText(newText);
-    props.showAlert("Text is converted to Capitalcase","success")
+    props.showAlert("Text is converted to Capitalcase", "success");
   };
   const [text, setText] = useState("");
   //   setText("new text"); // way to change
@@ -74,6 +87,12 @@ export default function TextForm(props) {
         </button>
         <button className="btn btn-primary mx-1" onClick={handleCapitalClick}>
           Capitalized case
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleCopy}>
+          Copy text
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>
+          Remove Extra Spaces
         </button>
       </div>
       <div
