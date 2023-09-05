@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+// import Darkmodeextensiom from "./Darkmodeextensiom";
 export default function Navbar(props) {
   return (
     <nav
@@ -45,6 +46,9 @@ export default function Navbar(props) {
               Search
             </button>
           </form> */}
+          {/* <div className="extension mx-2">
+            <Darkmodeextensiom />
+          </div> */}
           <div
             className={`form-check form-switch text-${
               props.mode === "light" ? "dark" : "light"
